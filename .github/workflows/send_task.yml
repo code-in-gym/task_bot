@@ -2,7 +2,7 @@ name: Distribute tasks on a CRON Schedule
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '8 2 * * *' # UTC time
 
 env:
   GO_VERSION: 1.19
