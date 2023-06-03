@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"log"
 
 	"code-in-gym/task_bot/config"
 	"code-in-gym/task_bot/notify/email"
@@ -40,7 +41,10 @@ func main() {
 		for k, v := range config.Task {
 			t := task.NewDailyTask(k, v)
 			index := t.Random()
-			e.NotifyFunc(k, t.Detail(index))
+			err := e.NotifyFunc(k, t.Detail(index))
+			if err != nil {
+				log.Println("Notify error:", err)
+			}
 		}
 	}
 }
