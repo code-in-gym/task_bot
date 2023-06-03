@@ -16,11 +16,11 @@ tasks = [
 ]
 cycle = true
 
-[task.reading]
-describe = "今天的回顾旧书是 %v, 享受阅读的乐趣吧！"
-tasks = [
-    "《这些人那些事》",
-    "《The Minimalist Entrepreneur》",
-    "《侠隐》",
-]
-cycle = false
+# [task.reading]
+# describe = "今天的回顾旧书是 %v, 享受阅读的乐趣吧！"
+# tasks = [
+#     "《这些人那些事》",
+#     "《The Minimalist Entrepreneur》",
+#     "《侠隐》",
+# ]
+# cycle = false
