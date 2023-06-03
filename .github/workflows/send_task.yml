@@ -1,0 +1,25 @@
+name: Distribute tasks on a CRON Schedule
+
+on:
+  schedule:
+    - cron: '50 * * * *'
+
+env:
+  GO_VERSION: 1.19
+
+jobs:
+  distribute:
+    name: Trigger task distributed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go Environment
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+        id: go
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+      - name: Go Get dependencies
+        run: go get -v -t -d ./...
+      - name: Distribute task
+        run: go run cmd/main.go --config daily.toml --server ${{ secrets.EMAIL_SERVER }} --user ${{ secrets.EMAIL_USER }} --pass ${{ secrets.EMAIL_PASS }} --from ${{ secrets.EMAIL_FROM }} --to ${{ secrets.EMAIL_TO }}
